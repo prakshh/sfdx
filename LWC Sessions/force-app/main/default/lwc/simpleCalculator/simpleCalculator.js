@@ -13,7 +13,7 @@ export default class SimpleCalculator extends LightningElement {
         if(inputBoxName === 'firstNumber') {
             this.firstNumber = event.target.value;
         } else if(inputBoxName === 'secondNumber') {
-            this.secondNumber = event.target.value;
+            this.secondNumber = event.target.value;exit
         }
     }
 
