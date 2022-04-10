@@ -1,11 +1,34 @@
 <template>
     <template if:true={showRoomInfo}>
-        <!-- Simple -->
         <div class="slds-p-around_medium lgc-bg">
-            <lightning-tile label={meetingRoomInfo.roomName} href="/path/to/somewhere">
-                <p class="slds-truncate" title={meetingRoomInfo.roomCapacity}>Room Capacity: {meetingRoomInfo.roomCapacity}</p>
-            </lightning-tile>
+            <slot name="roomInfo"></slot>
+            <slot></slot>  
+            <!-- unnamed slot -->
+
+            <!-- <lightning-tile label={meetingRoomInfo.roomName} href="/path/to/somewhere">
+                <p class="slds-truncate" title={meetingRoomInfo.roomCapacity}>
+                    Room Capacity: {meetingRoomInfo.roomCapacity}</p>
+            </lightning-tile> -->
         </div>
     </template>
 
 </template>
+
+<!-- 
+components and life-cycle 
+
+slots
+- placeholder to accept additional markup from parent component
+
+2 types of slots
+- named and unnamed (min: 0, max: 1)
+
+use slot as an ATTRIBUTE in parent component to pass/supply markup inside a named slot -- in parent component (meetingRooms.html)
+use slot as a TAG in child component to accept markup from parent component -- in child component (meetingRoom.html)
+
+If you have more than 1 unnamed slot,
+the markup passed into the body of the component is inserted into all the unnamed slots.
+
+slots - use them to pass additional markup
+public properties - use to pass additional data to child and run some logic 
+ -->
