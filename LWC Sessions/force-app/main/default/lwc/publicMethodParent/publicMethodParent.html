@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Call Methods On Child Component">
+        <lightning-input value={value} label="Checkbox Value" onchange={onInputChangeHandler}></lightning-input>
+        <lightning-button label="Select Checkbox" onclick={checkboxSelectHandler}></lightning-button>
+
+        <c-public-method-child></c-public-method-child>
+    </lightning-card>    
+</template>
+
+<!-- ====
+public methods
+- calling methods of parent component in child component
+- use @api decorator to make a method public 
+
+https://developer.salesforce.com/docs/component-library/bundle/lightning-checkbox-group/example
+
+query selectors
+- uses CSS selectors and returns the first element within the document that matches the specified selector.  
+
+ -->
