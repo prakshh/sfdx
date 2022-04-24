@@ -17,14 +17,14 @@ export default class CarSearchForm extends NavigationMixin(LightningElement) {
                 this.carTypes.push(carType);    // manipulating data and assigning new data to carTypes
             });
         } else if(error) {
-            this.ShowToastEvent('ERROR', error.body.message, 'error');
+            this.showToast('ERROR', error.body.message, 'error');
         }
     }
 
     handleCarTypeChange(event) {
         const carTypeId = event.detail.value;
 
-        const carTypeSeletionChangeEvent = new CustomEvent('carTypeId', {detail : carTypeId});
+        const carTypeSeletionChangeEvent = new CustomEvent('cartypeselect', {detail : carTypeId});
         this.dispatchEvent(carTypeSeletionChangeEvent);
     }
 
@@ -38,7 +38,7 @@ export default class CarSearchForm extends NavigationMixin(LightningElement) {
         });
     }
 
-    ShowToastEvent(title, message, variant) {
+    showToast(title, message, variant) {
         const evt = new ShowToastEvent({
             title: title,
             message: message,
