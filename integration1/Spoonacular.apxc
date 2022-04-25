@@ -3,7 +3,8 @@ public class Spoonacular {
     public static final String SPOONACULAR_API = 'https://api.spoonacular.com';
     public static final String API_KEY = 'c2e73f3e1ef5474ca79a503a85fed91e';
     
-    public static void getRandomRecipe() {
+    // public static void getRandomRecipe() {
+    public static String getRandomRecipe() {
         
         Http http = new Http();
         HttpRequest request = new HttpRequest();
@@ -12,13 +13,15 @@ public class Spoonacular {
         
         HttpResponse response = http.send(request);
         // If the request is successful, parse the JSON response.
-        System.debug('response code ' + response.getStatusCode());
+        // System.debug('response code ' + response.getStatusCode());
         if(response.getStatusCode() == 200) {
-            System.debug('response ' + response.getBody());
+            // System.debug('response ' + response.getBody());
+            return response.getBody();
         }
+        return '';
     }
     
-    public static void getRecipe(String recipeId) {
+    public static String getRecipe(String recipeId) {
         
         Http http = new Http();
         HttpRequest request = new HttpRequest();
@@ -29,11 +32,13 @@ public class Spoonacular {
         // If the request is successful, parse the JSON response.
         System.debug('response code ' + response.getStatusCode());
         if(response.getStatusCode() == 200) {
-            System.debug('response ' + response.getBody());
+            // System.debug('response ' + response.getBody());
+            return response.getBody();
         }
+        return '';
     }
     
-    public static void getRecipeByIngredient(String ingredients) {
+    public static String getRecipeByIngredient(String ingredients) {
         
         Http http = new Http();
         HttpRequest request = new HttpRequest();
@@ -44,8 +49,10 @@ public class Spoonacular {
         // If the request is successful, parse the JSON response.
         System.debug('response code ' + response.getStatusCode());
         if(response.getStatusCode() == 200) {
-            System.debug('response ' + response.getBody());
+            // System.debug('response ' + response.getBody());
+            return response.getBody();
         }
+        return '';
     }
     
 }
