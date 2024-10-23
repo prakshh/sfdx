@@ -33,7 +33,7 @@
         <name>StaticResource</name>
     </types>-->
     <types>
-        <members>TestTrigger4v3</members>
+        <members>TestTrigger5CountCon</members>
         <name>ApexTrigger</name>
     </types>
     <version>59.0</version>
