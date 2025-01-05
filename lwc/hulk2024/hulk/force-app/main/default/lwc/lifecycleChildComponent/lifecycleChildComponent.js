@@ -2,7 +2,7 @@ import { LightningElement } from 'lwc';
 
 export default class LifecycleChildComponent extends LightningElement {
     constructor() {
-        // super();
+        super();
         console.log("Call from Child constructor");
     }
     connectedCallback() {
@@ -10,5 +10,9 @@ export default class LifecycleChildComponent extends LightningElement {
     }
     renderedCallback() {
         console.log("Call from Child rendered callback");
+    }
+
+    disconnectedCallback() {
+        console.log("Call from Child disconnected callback");
     }
 }
