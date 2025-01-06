@@ -14,7 +14,7 @@ public with sharing class AccountController {
         }
     }
 }
-// apex class AccountController - done
+
 /*
 
 @AuraEnabled
@@ -26,3 +26,20 @@ public with sharing class AccountController {
     - can be used for read-only operations to benefit from client-side caching in LWC.
 
 */
+
+
+
+
+
+/*public class AccountController {
+    public static Account insertAccount(Account accountToInsert) {
+        insert accountToInsert;
+        return accountToInsert;
+    }
+    
+    public static List<Account> insertAccounts(List<Account> accountsToInsert) {
+        insert accountsToInsert;
+        return accountsToInsert;
+    }
+
+}*/
