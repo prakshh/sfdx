@@ -2,13 +2,19 @@ public with sharing class AccountController {
     @AuraEnabled(cacheable=true)
     public static List<Account> getHighRevenueAccountRecords(){
         try {
+            // solving -> Validate CRUD permission before SOQL/DML operation (rule: Security-ApexCRUDViolation)apex pmdApexCRUDViolation
+            // Check if the current user has read access to the Account object
+            if (!Schema.sObjectType.Account.isAccessible()) {
+                throw new AuraHandledException('Insufficient permissions to access Account records.');
+            }
+            // Query the records only if the user has read access
             return [SELECT Id, Name, AnnualRevenue FROM Account ORDER BY AnnualRevenue DESC NULLS LAST LIMIT 5];
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
     }
 }
-
+// apex class AccountController - done
 /*
 
 @AuraEnabled
