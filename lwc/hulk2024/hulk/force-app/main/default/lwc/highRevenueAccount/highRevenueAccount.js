@@ -1,6 +1,25 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, wire } from 'lwc';
+import getHighRevenueAccountRecords from '@salesforce/apex/AccountController.getHighRevenueAccountRecords';
 
-export default class HighRevenueAccount extends LightningElement {}
+export default class HighRevenueAccount extends LightningElement {
+    accountsToDisplay = [];
+
+    @wire(getHighRevenueAccountRecords)
+    getAccountsHandler(response) {
+        // {error: ..., data: ...}
+        // case 1:- {error: undefined, data: ...}
+        // case 1:- {error: ..., data: undefined}
+        const {data, error} = response;     // destructuring (data = response.data; error = response.error;)
+        if(error) {
+            console.error(error);
+            return;
+        }
+        if(data) {
+            this.accountsToDisplay = data;
+        }
+        
+    }
+}
 
 /*
 
