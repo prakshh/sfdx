@@ -6,14 +6,24 @@ export default class StudentRegistrationForm extends LightningElement {
     lastName = '';
     email = '';
 
+    // non-primitive properties
+    studentData = {};
+
     handleFirstNameChange(event) {
-        this.firstName = event.target.value;
+        //this.firstName = event.target.value;
+        this.studentData.firstName = event.target.value;
+            /*This doesn't display the input values because 2 conditions are met here
+                1. non-tracked properties
+                2. trying to access to nested properties within the array 
+            */
     }
     handleLastNameChange(event) {
-        this.lastName = event.target.value;
+        //this.lastName = event.target.value;
+        this.studentData.lastName = event.target.value;
     }
     handleEmailChange(event) {
-        this.email = event.target.value;
+        //this.email = event.target.value;
+        this.studentData.email = event.target.value;
     }
         
 }
