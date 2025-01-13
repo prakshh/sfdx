@@ -1,4 +1,4 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, track } from 'lwc';
 
 export default class StudentRegistrationForm extends LightningElement {    
     // primitive properties
@@ -9,21 +9,27 @@ export default class StudentRegistrationForm extends LightningElement {
     // non-primitive properties
     studentData = {};
 
+    @track
+    reactiveStudentData = {};
+
     handleFirstNameChange(event) {
         //this.firstName = event.target.value;
-        this.studentData.firstName = event.target.value;
+        //this.studentData.firstName = event.target.value;
             /*This doesn't display the input values because 2 conditions are met here
                 1. non-tracked properties
                 2. trying to access to nested properties within the array 
             */
+        this.reactiveStudentData.firstName = event.target.value;
     }
     handleLastNameChange(event) {
         //this.lastName = event.target.value;
-        this.studentData.lastName = event.target.value;
+        //this.studentData.lastName = event.target.value;
+        this.reactiveStudentData.lastName = event.target.value;
     }
     handleEmailChange(event) {
         //this.email = event.target.value;
-        this.studentData.email = event.target.value;
+        //this.studentData.email = event.target.value;
+        this.reactiveStudentData.email = event.target.value;
     }
         
 }
