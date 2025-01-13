@@ -1,6 +1,22 @@
 import { LightningElement } from 'lwc';
 
-export default class StudentRegistrationForm extends LightningElement {}
+export default class StudentRegistrationForm extends LightningElement {    
+    // primitive properties
+    firstName = '';
+    lastName = '';
+    email = '';
+
+    handleFirstNameChange(event) {
+        this.firstName = event.target.value;
+    }
+    handleLastNameChange(event) {
+        this.lastName = event.target.value;
+    }
+    handleEmailChange(event) {
+        this.email = event.target.value;
+    }
+        
+}
 
 /*
 

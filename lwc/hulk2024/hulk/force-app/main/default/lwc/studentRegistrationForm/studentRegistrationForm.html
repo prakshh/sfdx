@@ -1,3 +1,16 @@
 <template>
-    
+    <lightning-card title="Student Registration Form">
+        <div class="slds-m-around_medium">
+            <lightning-input label="First Name" onkeyup={handleFirstNameChange}></lightning-input>
+            <lightning-input label="Last Name" onkeyup={handleLastNameChange}></lightning-input>
+            <lightning-input label="Email" onkeyup={handleEmailChange}></lightning-input>
+        </div>
+    </lightning-card>
+    <lightning-card title="Registered Student Details from each property">
+        <div class="slds-m-around_medium">
+            <p>First Name: {firstName}</p>
+            <p>Last Name: {lastName}</p>
+            <p>Email Name: {email}</p>
+        </div>
+    </lightning-card>
 </template>
