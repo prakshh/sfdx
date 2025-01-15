@@ -6,4 +6,9 @@ export default class ApiDecoratorExampleParentComponent extends LightningElement
         // Alternative way to set child property value 
         this.template.querySelector('c-api-decorator-example-child-component').childProperty2 = inputValue;
     }
+
+    emptyChildProperty() {
+        // calling the child method
+        this.template.querySelector('c-api-decorator-example-child-component').callChildMethod();
+    }
 }
