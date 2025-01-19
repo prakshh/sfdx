@@ -1,0 +1,14 @@
+<template>
+    <lightning-input value=""></lightning-input>
+    <lightning-button label="Set value" onclick={setValue}></lightning-button>
+
+    <!-- custom event -->
+    <c-custom-events-child-component child-property1="Hello Custom World" onsend={storeMessage}></c-custom-events-child-component>
+
+    <lightning-button label="Call Child Method" onclick={emptyChildProperty}></lightning-button>
+
+    <!-- custom event -->
+    <lightning-card title="Latest message from Child component">
+        <p class="slds-p-left_small">{childMessage}</p>
+    </lightning-card>
+</template>

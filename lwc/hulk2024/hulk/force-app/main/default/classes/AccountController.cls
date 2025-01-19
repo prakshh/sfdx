@@ -23,6 +23,25 @@ public with sharing class AccountController {
         }
     }
     
+    // display  account name that starts with T
+	// create an lwc component and display accounts in the table format
+	// add a button to show number of selected records count
+    
+    @AuraEnabled
+    public static List<Account> getAccountsStartingWithT() {
+        /*try {
+            return [SELECT Name FROM Account WHERE Name LIKE 'T%'];                    
+        } catch(Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }*/
+        return [
+            SELECT Id, Name, Phone, Industry
+            FROM Account
+            WHERE Name LIKE 'T%'
+            ORDER BY Name
+        ];
+    }
+    
 }
 
 /*
