@@ -4,11 +4,11 @@
         <members>LeadTrigger</members>
         <name>ApexTrigger</name>
     </types>
-    <!--<types>
-        <members>*</members>
+    <types>
+        <members>LeadTriggerHandler</members>
         <name>ApexClass</name>
     </types>
-    <types>
+    <!--<types>
         <members>*</members>
         <name>ApexComponent</name>
     </types>

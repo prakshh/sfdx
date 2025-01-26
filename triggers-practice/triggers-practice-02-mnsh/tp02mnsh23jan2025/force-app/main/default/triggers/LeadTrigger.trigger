@@ -1,5 +1,19 @@
 trigger LeadTrigger on Lead(before insert, before update, after insert, after update) {
     switch on Trigger.operationType {
+        when BEFORE_INSERT {
+            LeadTriggerHandler.beforeInsertHandler(Trigger.new);
+        }
+        when BEFORE_UPDATE {
+            LeadTriggerHandler.beforeUpdateHandler(Trigger.new, Trigger.oldMap);
+        }      
+        when AFTER_INSERT {
+            LeadTriggerHandler.afterInsertHandler(Trigger.new);
+        }       
+    }
+}
+
+/*trigger LeadTrigger on Lead(before insert, before update, after insert, after update) {
+    switch on Trigger.operationType {
         
         when BEFORE_INSERT {
             for(Lead leadRecord : Trigger.new) {
@@ -9,12 +23,6 @@ trigger LeadTrigger on Lead(before insert, before update, after insert, after up
                 if(String.isEmpty(leadRecord.Industry)) {
                     leadRecord.Industry.addError('Industry field cannot be blank');
                 }
-                /*
-                if((leadRecord.Status == 'Closed - Converted' || leadRecord.Status == 'Closed - Not Converted') && Trigger.oldMap.get(leadRecord.Id).Status == 'Open - Not Contacted') {
-                       leadRecord.Status.addError('Lead Status cannot be marked as Closed directly from Open');
-                }
-					// you're using Trigger.oldMap in the BEFORE_INSERT context, which is invalid because there is no Trigger.oldMap during an INSERT operation (records don't yet exist in the database). This will throw a null pointer exception.
-				*/
             }
         }
         
@@ -33,16 +41,18 @@ trigger LeadTrigger on Lead(before insert, before update, after insert, after up
         }
         
         when AFTER_INSERT {
-            /*for(Lead leadRecord : Trigger.new) {
+            for(Lead leadRecord : Trigger.new) {
                 Task leadTaskRecord = new Task(Subject='Follow up with Lead', WhoId=leadRecord.Id);
                 insert leadTaskRecord;
-            }*/
-            List<Task> lstTaskRecords = new List<Task>();
-            for(Lead leadRecord: Trigger.new) {
-                Task taskRecord = new Task(Subject='Follow up with Lead', WhoId=leadRecord.Id);
-                lstTaskRecords.add(taskRecord);
             }
-            insert lstTaskRecords;
+            
+            // bulkification
+            // List<Task> lstTaskRecords = new List<Task>();
+            // for(Lead leadRecord: Trigger.new) {
+                // Task taskRecord = new Task(Subject='Follow up with Lead', WhoId=leadRecord.Id);
+                // lstTaskRecords.add(taskRecord);
+            // }
+            // insert lstTaskRecords;
             
             System.debug('Trigger size: ' + Trigger.size);				// null
             System.debug('is Trigger: ' + Trigger.isExecuting);			// false
@@ -50,7 +60,9 @@ trigger LeadTrigger on Lead(before insert, before update, after insert, after up
         }
         
     }
-}
+}*/
+
+
 
 /* anonymous window
 
