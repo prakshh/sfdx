@@ -1,5 +1,8 @@
 public class LeadTriggerHandler {
     
+    // recursive trigger problem - solution
+    public static boolean alreadyExecuted = false;
+    
     public static void beforeInsertHandler(List<Lead> lstNewLeadRecords) {
         for(Lead leadRecord : lstNewLeadRecords) {
             if(String.isBlank(leadRecord.Title)) {
@@ -33,6 +36,21 @@ public class LeadTriggerHandler {
             lstTaskRecords.add(taskRecord);
         }
         insert lstTaskRecords;
+        
+        /*
+        // recursive trigger problem
+        // error: maximum trigger depth exceeded
+        Lead anotherLeadRecord = new Lead(LastName='Lead04Recursive', Industry='Ok Industries', Company='Ok Co.');
+        insert anotherLeadRecord;
+		*/
+        
+        // recursive trigger problem - solution
+        if(LeadTriggerHandler.alreadyExecuted == false) {
+            LeadTriggerHandler.alreadyExecuted = true;
+            Lead anotherLeadRecord = new Lead(LastName='Lead04Recursive', Industry='Ok Industries', Company='Ok Co.');
+        	insert anotherLeadRecord;
+        }
+        
     }
     
 }
