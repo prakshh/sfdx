@@ -1,3 +1,7 @@
+/*
+ Scenario 3: Whenever Account’s Phone field is updated, then all related Contact’s Phone field should also get updated with Parent Account’s Phone
+*/
+
 trigger T03_UpdateChildByParent_AccPhone_To_ConPhone on Account (after update) {
     
     Map<Id,Account> accMap = new Map<Id,Account>();
