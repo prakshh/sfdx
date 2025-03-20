@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>T05_CountContactsOfAccounts_RollUpSummary</members>
+        <members>T06_PreventDuplicationAccountName</members>
         <name>ApexTrigger</name>
     </types>
     <!--<types>
